@@ -10,13 +10,13 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Stock;
 use App\Entity\StockType;
 
-class PortfolioController extends AbstractController
+class PortfolioControllerTemp extends AbstractController
 {
     #[Route('/portfolio', name: 'app_portfolio')]
     public function index(): Response
     {
         return $this->render('portfolio/index.html.twig', [
-            'controller_name' => 'PortfolioController',
+            'controller_name' => 'PortfolioControllerTemp',
         ]);
     }
 

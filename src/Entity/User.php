@@ -46,6 +46,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->portfolios = new ArrayCollection();
     }
 
+    public function canCreatePortfolio(): bool
+    {
+        return count($this->portfolios) < 5;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
