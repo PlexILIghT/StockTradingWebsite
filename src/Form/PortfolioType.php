@@ -3,9 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Portfolio;
-use App\Entity\User;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,12 +14,12 @@ class PortfolioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('balance')
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
+            ->add('name', TextType::class, [
+                'label' => 'Portfolio Name',
             ])
-        ;
+            ->add('balance', NumberType::class, [
+                'label' => 'Initial Balance',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

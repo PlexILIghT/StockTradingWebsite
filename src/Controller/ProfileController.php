@@ -9,10 +9,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use UserPortfolioType;
 
 class ProfileController extends AbstractController
 {
-    #[Route('/profile', name: 'app_profile', methods: ['GET'])]
+    #[Route('/profile', name: 'app_profile', methods: ['GET', 'POST'])]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
@@ -20,10 +21,11 @@ class ProfileController extends AbstractController
         $portfolio = new Portfolio();
         $portfolio->setUser($user);
 
-        $form = $this->createForm(PortfolioType::class, $portfolio);
+        $form = $this->createForm(UserPortfolioType::class, $portfolio);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $entityManager->persist($portfolio);
             $entityManager->flush();
 

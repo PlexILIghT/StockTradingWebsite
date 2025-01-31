@@ -15,6 +15,7 @@ class ApplicationRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Application::class);
+
     }
 
     public function deleteApplication(Application $application): void

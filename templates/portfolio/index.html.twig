@@ -10,6 +10,8 @@
             <tr>
                 <th>Id</th>
                 <th>Balance</th>
+                <th>Name</th>
+                <th>Owner</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -18,9 +20,11 @@
             <tr>
                 <td>{{ portfolio.id }}</td>
                 <td>{{ portfolio.balance }}</td>
+                <td>{{ portfolio.name }}</td>
+                <td>{{ portfolio.user.username }}</td>
                 <td>
-                    <a href="{{ path('app_portfolio_show', {'id': portfolio.id}) }}">show</a>
-                    <a href="{{ path('app_portfolio_edit', {'id': portfolio.id}) }}">edit</a>
+                    <a href="{{ path('app_portfolio_show', {'id': portfolio.id, 'name': portfolio.name}) }}">show</a>
+                    <a href="{{ path('app_portfolio_edit', {'id': portfolio.id, 'name': portfolio.name}) }}">edit</a>
                 </td>
             </tr>
         {% else %}

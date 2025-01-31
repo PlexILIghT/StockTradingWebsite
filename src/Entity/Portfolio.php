@@ -28,6 +28,9 @@ class Portfolio
     #[ORM\OneToMany(targetEntity: Depositary::class, mappedBy: 'portfolio')]
     private Collection $depositaries;
 
+    #[ORM\Column(length: 63)]
+    private ?string $name = null;
+
     public function __construct()
     {
         $this->depositaries = new ArrayCollection();
@@ -88,6 +91,18 @@ class Portfolio
                 $depositary->setPortfolio(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): static
+    {
+        $this->name = $name;
 
         return $this;
     }
